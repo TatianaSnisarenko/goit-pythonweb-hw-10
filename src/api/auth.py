@@ -7,7 +7,7 @@ from fastapi import (
     BackgroundTasks,
     Request,
 )
-from sqlalchemy.orm import Session
+from sqlalchemy.ext.asyncio import AsyncSession
 from fastapi.security import OAuth2PasswordRequestForm
 from schemas import UserCreate, Token, User, RequestEmail
 from services.auth import create_access_token, Hash
@@ -24,7 +24,7 @@ async def register_user(
     user_data: UserCreate,
     background_tasks: BackgroundTasks,
     request: Request,
-    db: Session = Depends(get_db),
+    db: AsyncSession = Depends(get_db),
 ):
     """
     Register a new user.
@@ -64,7 +64,7 @@ async def register_user(
 
 @router.post("/login", response_model=Token)
 async def login_user(
-    form_data: OAuth2PasswordRequestForm = Depends(), db: Session = Depends(get_db)
+    form_data: OAuth2PasswordRequestForm = Depends(), db: AsyncSession = Depends(get_db)
 ):
     """
     Authenticate a user.
@@ -91,7 +91,7 @@ async def login_user(
 
 
 @router.get("/confirmed_email/{token}")
-async def confirmed_email(token: str, db: Session = Depends(get_db)):
+async def confirmed_email(token: str, db: AsyncSession = Depends(get_db)):
     """
     Confirm a user's email address.
 
@@ -117,7 +117,7 @@ async def request_email(
     body: RequestEmail,
     background_tasks: BackgroundTasks,
     request: Request,
-    db: Session = Depends(get_db),
+    db: AsyncSession = Depends(get_db),
 ):
     """
     Request a new confirmation email.
