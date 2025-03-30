@@ -80,6 +80,8 @@ CLOUDINARY_API_KEY={api_key}
 CLOUDINARY_API_SECRET={api_secret}
 ```
 
+For POSTGRES_HOST use localhost for local run and postgres for container run
+
 Ensure that the email account you use has SMTP enabled.
 
 ### Step 3: Install Dependencies
@@ -112,8 +114,8 @@ from sqlalchemy import pool
 
 from alembic import context
 
-from database.models import Base
-from conf.config import config as app_config
+from src.database.models import Base
+from src.conf.config import config as app_config
 ```
 
 Find the following line in `env.py`:
@@ -171,6 +173,12 @@ Start the FastAPI server:
 
 ```sh
 fastapi dev src/main.py
+```
+
+### Running using docker-compose ise command
+
+```sh
+docker-compose up --build
 ```
 
 ### Use Swagger for API Exploration

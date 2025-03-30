@@ -1,5 +1,5 @@
 import contextlib
-from conf.config import settings
+from src.conf.config import settings
 
 from sqlalchemy.exc import SQLAlchemyError
 from sqlalchemy.ext.asyncio import (

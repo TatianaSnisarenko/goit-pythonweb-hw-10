@@ -1,14 +1,14 @@
 from fastapi import APIRouter, Depends, Request
-from schemas import User
-from services.auth import get_current_user
+from src.schemas import User
+from src.services.auth import get_current_user
 from slowapi import Limiter
 from slowapi.util import get_remote_address
 from fastapi import UploadFile, File
 from sqlalchemy.ext.asyncio import AsyncSession
-from database.db import get_db
-from conf.config import settings
-from services.users import UserService
-from services.upload_file import UploadFileService
+from src.database.db import get_db
+from src.conf.config import settings
+from src.services.users import UserService
+from src.services.upload_file import UploadFileService
 
 router = APIRouter(prefix="/users", tags=["users"])
 limiter = Limiter(key_func=get_remote_address)

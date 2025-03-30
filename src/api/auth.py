@@ -9,12 +9,12 @@ from fastapi import (
 )
 from sqlalchemy.ext.asyncio import AsyncSession
 from fastapi.security import OAuth2PasswordRequestForm
-from schemas import UserCreate, Token, User, RequestEmail
-from services.auth import create_access_token, Hash
-from services.users import UserService
-from services.email import send_email
-from services.auth import get_email_from_token
-from database.db import get_db
+from src.schemas import UserCreate, Token, User, RequestEmail
+from src.services.auth import create_access_token, Hash
+from src.services.users import UserService
+from src.services.email import send_email
+from src.services.auth import get_email_from_token
+from src.database.db import get_db
 
 router = APIRouter(prefix="/auth", tags=["auth"])
 

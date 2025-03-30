@@ -4,8 +4,8 @@ from datetime import date, timedelta
 from sqlalchemy.exc import IntegrityError
 from fastapi import HTTPException, status
 
-from repository.contacts import ContactRepository
-from schemas import ContactModel, User
+from src.repository.contacts import ContactRepository
+from src.schemas import ContactModel, User
 
 
 def _handle_integrity_error(e: IntegrityError):

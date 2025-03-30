@@ -6,9 +6,9 @@ from passlib.context import CryptContext
 from fastapi.security import OAuth2PasswordBearer
 from sqlalchemy.ext.asyncio import AsyncSession
 from jose import JWTError, jwt
-from conf.config import settings
-from database.db import get_db
-from services.users import UserService
+from src.conf.config import settings
+from src.database.db import get_db
+from src.services.users import UserService
 
 
 class Hash:

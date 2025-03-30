@@ -1,8 +1,8 @@
 from sqlalchemy.ext.asyncio import AsyncSession
 from libgravatar import Gravatar
 
-from repository.users import UserRepository
-from schemas import UserCreate
+from src.repository.users import UserRepository
+from src.schemas import UserCreate
 
 
 class UserService:

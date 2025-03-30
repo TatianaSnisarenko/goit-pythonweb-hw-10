@@ -2,7 +2,7 @@ from fastapi import FastAPI
 from fastapi import FastAPI, HTTPException, Request
 from fastapi.responses import JSONResponse
 from fastapi.middleware.cors import CORSMiddleware
-from api import contacts, utils, auth, users
+from src.api import contacts, utils, auth, users
 from slowapi.errors import RateLimitExceeded
 
 app = FastAPI()

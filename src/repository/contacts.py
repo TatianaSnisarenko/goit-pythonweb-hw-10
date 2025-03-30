@@ -5,8 +5,8 @@ from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy.sql import or_, and_, extract
 from datetime import date
 
-from database.models import Contact
-from schemas import ContactModel, User
+from src.database.models import Contact
+from src.schemas import ContactModel, User
 
 
 class ContactRepository:
