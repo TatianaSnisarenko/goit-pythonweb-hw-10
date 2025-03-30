@@ -1,4 +1,4 @@
-from pydantic import ConfigDict
+from pydantic import ConfigDict, EmailStr
 from pydantic_settings import BaseSettings
 
 
@@ -10,6 +10,16 @@ class Settings(BaseSettings):
     model_config = ConfigDict(
         extra="ignore", env_file=".env", env_file_encoding="utf-8"
     )
+    MAIL_USERNAME: EmailStr
+    MAIL_PASSWORD: str
+    MAIL_FROM: EmailStr
+    MAIL_PORT: int
+    MAIL_SERVER: str
+    MAIL_FROM_NAME: str = "Contacts API Service"
+    MAIL_STARTTLS: bool = False
+    MAIL_SSL_TLS: bool = True
+    USE_CREDENTIALS: bool = True
+    VALIDATE_CERTS: bool = True
 
 
 settings = Settings()

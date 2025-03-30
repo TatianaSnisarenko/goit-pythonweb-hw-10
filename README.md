@@ -1,6 +1,6 @@
 # Contacts API
 
-Contacts API is a RESTful API for managing contacts for each user separately using an authentication mechanism. It provides functionality to create, read, update, and delete contacts, as well as search for contacts and retrieve a list of contacts with upcoming birthdays. Additionally, users can view their profile information and update their avatar.
+Contacts API is a RESTful API for managing contacts for each user separately using an authentication mechanism. It provides functionality to create, read, update, and delete contacts, as well as search for contacts and retrieve a list of contacts with upcoming birthdays. Additionally, users can view their profile information and update their avatar. The application includes an email verification feature that sends a confirmation email to users upon registration. This ensures that only valid email addresses are used for account creation.
 
 ## Features
 
@@ -8,7 +8,7 @@ Contacts API is a RESTful API for managing contacts for each user separately usi
 
 1. **CRUD Operations**:
 
-   - User Registration
+   - User Registration with email verifiation
    - User Login
    - Create a new contact.
    - Retrieve a list of contacts with pagination.
@@ -61,7 +61,20 @@ DB_URL=postgresql+asyncpg://${POSTGRES_USER}:${POSTGRES_PASSWORD}@${POSTGRES_HOS
 JWT_SECRET=your_secret_key
 JWT_ALGORITHM=HS256
 JWT_EXPIRATION_SECONDS=3600
+
+MAIL_USERNAME={email_address}
+MAIL_PASSWORD={email_password}
+MAIL_FROM={email_address}
+MAIL_PORT={port}
+MAIL_SERVER={smrp_server}
+MAIL_FROM_NAME=Contacts API Service
+MAIL_STARTTLS=False
+MAIL_SSL_TLS=True
+USE_CREDENTIALS=True
+VALIDATE_CERTS=True
 ```
+
+Ensure that the email account you use has SMTP enabled.
 
 ### Step 3: Install Dependencies
 
