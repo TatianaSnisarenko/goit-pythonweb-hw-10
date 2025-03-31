@@ -34,6 +34,8 @@ Contacts API is a RESTful API for managing contacts for each user separately usi
 
 ## Setup and Usage
 
+## Local setup
+
 ### Step 1: Start a PostgreSQL Container
 
 Run the following command (replace all values in `{}`) to start a PostgreSQL container:
@@ -185,3 +187,58 @@ docker-compose up --build
 
 - Swagger UI: [http://127.0.0.1:8000/docs](http://127.0.0.1:8000/docs)
 - ReDoc: [http://127.0.0.1:8000/redoc](http://127.0.0.1:8000/redoc)
+
+## Start application using docker-compose
+
+### Step 1: Create a `.env` file and configure the following values:
+
+```env
+POSTGRES_DB={db_name}
+POSTGRES_USER={postgres_user}
+POSTGRES_PASSWORD={postgres_password}
+POSTGRES_PORT={postgres_port}
+POSTGRES_HOST={postgres_host}
+
+DB_URL=postgresql+asyncpg://${POSTGRES_USER}:${POSTGRES_PASSWORD}@${POSTGRES_HOST}:${POSTGRES_PORT}/${POSTGRES_DB}
+JWT_SECRET=your_secret_key
+JWT_ALGORITHM=HS256
+JWT_EXPIRATION_SECONDS=3600
+
+MAIL_USERNAME={email_address}
+MAIL_PASSWORD={email_password}
+MAIL_FROM={email_address}
+MAIL_PORT={port}
+MAIL_SERVER={smrp_server}
+MAIL_FROM_NAME=Contacts API Service
+MAIL_STARTTLS=False
+MAIL_SSL_TLS=True
+USE_CREDENTIALS=True
+VALIDATE_CERTS=True
+
+CLOUDINARY_NAME={cloud_name}
+CLOUDINARY_API_KEY={api_key}
+CLOUDINARY_API_SECRET={api_secret}
+```
+
+For POSTGRES_HOST use localhost for local run and postgres for container run
+
+Ensure that the email account you use has SMTP enabled.
+
+### Step 2: Start the application
+
+First start up:
+
+```sh
+docker-compose up --build
+```
+
+Following start ups:
+
+```sh
+docker-compose up -d
+```
+
+### Use Swagger for API Exploration
+
+- Swagger UI: [http://localhost:8080/docs](http://localhost:8080/docs)
+- ReDoc: [http://localhost:8080/redoc](http://localhost:8080/redoc)

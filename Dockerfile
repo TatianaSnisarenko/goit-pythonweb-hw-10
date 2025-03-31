@@ -3,5 +3,6 @@ ENV APP_HOME /app
 WORKDIR $APP_HOME
 COPY . .
 RUN pip install -r requirements.txt
+RUN chmod +x start.sh
 EXPOSE 8080
-ENTRYPOINT ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000"]
+ENTRYPOINT ["./start.sh"]
